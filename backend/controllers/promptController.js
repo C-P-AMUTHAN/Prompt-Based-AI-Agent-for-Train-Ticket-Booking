@@ -486,7 +486,7 @@ exports.handlePromptBooking = async (req, res) => {
       });
     }
 
-    const API = import.meta.env.VITE_API_BASE;
+    const API = process.env.BACKEND_URL;
     // STEP 2: Validation Rules
     // Validate stations exist
     try {
