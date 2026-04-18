@@ -28,8 +28,6 @@ app.use(cors({
   credentials: true
 }));
 
-// Handle preflight requests explicitly
-app.options("*", cors());
 
 // ✅ INCREASED PAYLOAD LIMITS for Base64-encoded PDF uploads
 // Default Express limit is 100KB, but Base64 PDFs need more space
