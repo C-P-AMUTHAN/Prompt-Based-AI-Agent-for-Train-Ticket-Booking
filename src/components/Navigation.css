@@ -1,0 +1,228 @@
+/* Navigation component styles */
+.navigation {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  align-items: center;
+  padding: 0 1rem;
+}
+
+.nav-link {
+  color: #6366F1;
+  font-weight: 500;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: all 0.15s ease-in-out;
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+}
+
+.nav-link:hover {
+  color: #4F46E5;
+  background-color: rgba(99, 102, 241, 0.1);
+  text-decoration: none;
+}
+
+.nav-link.active {
+  color: #4F46E5;
+  font-weight: 600;
+  background-color: rgba(99, 102, 241, 0.1);
+}
+
+/* Sign In & Sign Up buttons */
+.nav-link.signin {
+  color: #16a34a;
+  background-color: rgba(22, 163, 74, 0.1);
+  font-weight: 600;
+}
+
+.nav-link.signin:hover {
+  color: #15803d;
+  background-color: rgba(22, 163, 74, 0.2);
+}
+
+.nav-link.signup {
+  color: white;
+  background: linear-gradient(135deg, #4f46e5 0%, #6366f1 100%);
+  font-weight: 600;
+  box-shadow: 0 4px 15px rgba(79, 70, 229, 0.3);
+}
+
+.nav-link.signup:hover {
+  background: linear-gradient(135deg, #4338ca 0%, #4f46e5 100%);
+  box-shadow: 0 4px 20px rgba(79, 70, 229, 0.4);
+  transform: translateY(-2px);
+}
+
+/* Admin button */
+.nav-link.admin {
+  color: #dc2626;
+  background-color: rgba(220, 38, 38, 0.1);
+  font-weight: 600;
+}
+
+.nav-link.admin:hover {
+  color: #991b1b;
+  background-color: rgba(220, 38, 38, 0.2);
+}
+
+/* ============ PROFILE SECTION ============ */
+.nav-auth {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+/* Profile Section Container */
+.profile-section {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* Profile Logo Button */
+.profile-logo-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 2px solid #4f46e5;
+  background: linear-gradient(135deg, #4f46e5 0%, #6366f1 100%);
+  color: white;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(79, 70, 229, 0.3);
+}
+
+.profile-logo-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 25px rgba(79, 70, 229, 0.4);
+}
+
+.profile-logo-btn:active {
+  transform: scale(0.95);
+}
+
+/* Dropdown Menu */
+.profile-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 0.75rem;
+  width: 280px;
+  background: white;
+  border-radius: 0.75rem;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  overflow: hidden;
+  border: 1px solid rgba(79, 70, 229, 0.1);
+}
+
+/* Dropdown Header with User Info */
+.dropdown-header {
+  padding: 1rem;
+  background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+  border-bottom: 1px solid rgba(79, 70, 229, 0.1);
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.user-name {
+  font-weight: 600;
+  color: #111827;
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+.user-email {
+  color: #6b7280;
+  font-size: 0.875rem;
+  margin: 0;
+  word-break: break-word;
+}
+
+/* Dropdown Divider */
+.dropdown-divider {
+  height: 1px;
+  background-color: rgba(79, 70, 229, 0.1);
+}
+
+/* Dropdown Items */
+.dropdown-item {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  border: none;
+  background: none;
+  color: #374151;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-align: left;
+}
+
+.dropdown-item:hover {
+  background-color: rgba(79, 70, 229, 0.1);
+  color: #4f46e5;
+}
+
+.dropdown-item:active {
+  background-color: rgba(79, 70, 229, 0.2);
+}
+
+.dropdown-icon {
+  font-size: 1.125rem;
+  display: flex;
+  align-items: center;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .nav-container {
+    gap: 0.75rem;
+  }
+
+  .nav-link {
+    font-size: 0.9rem;
+    padding: 0.4rem 0.75rem;
+  }
+
+  .profile-dropdown {
+    width: 240px;
+    right: -60px;
+  }
+
+  .profile-logo-btn {
+    width: 44px;
+    height: 44px;
+    font-size: 20px;
+  }
+}
+
+@media (min-width: 768px) {
+  .nav-container {
+    gap: 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .nav-container {
+    gap: 2.5rem;
+  }
+}

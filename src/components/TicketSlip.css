@@ -1,0 +1,366 @@
+/* Ticket Slip Overlay */
+.ticket-slip-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.ticket-slip-container {
+  background: white;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  max-width: 850px;
+  width: 100%;
+  position: relative;
+  margin: 20px auto;
+  /* A4 Paper Dimensions */
+  width: 210mm;
+  height: auto;
+}
+
+.ticket-close-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: #333;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  font-size: 20px;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.2s;
+}
+
+.ticket-close-btn:hover {
+  background: #000;
+  transform: scale(1.1);
+}
+
+/* Ticket Content - Government Document Style */
+.ticket-slip-content {
+  padding: 25px 35px;
+  background: white;
+  font-family: 'Arial', sans-serif;
+  color: #000;
+  line-height: 1.5;
+  font-size: 13px;
+  text-align: center;
+}
+
+/* PDF Mode - Fixed dimensions for PDF generation */
+.ticket-slip-content.pdf-mode {
+  width: 800px !important;
+  margin: 0 !important;
+  padding: 25px 35px !important;
+  background: white !important;
+  font-family: 'Arial', sans-serif !important;
+  color: #000 !important;
+  line-height: 1.5 !important;
+  font-size: 13px !important;
+  text-align: center !important;
+}
+
+/* ============ HEADER ============ */
+.ticket-header {
+  padding-bottom: 10px;
+  border-bottom: 2px solid #000;
+  margin-bottom: 14px;
+  text-align: center;
+}
+
+.ticket-header h1 {
+  margin: 0 0 4px 0;
+  font-size: 15px;
+  font-weight: bold;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+.ticket-header p {
+  margin: 2px 0;
+  font-size: 11px;
+  font-weight: normal;
+  text-align: center;
+}
+
+/* ============ DOCUMENT ROWS ============ */
+.ticket-row {
+  margin-bottom: 2px;
+  text-align: center;
+  padding: 2px 0;
+  font-size: 12px;
+}
+
+.row-content {
+  display: inline-block;
+  text-align: center;
+}
+
+.field-label {
+  font-weight: bold;
+  font-size: 12px;
+  display: inline;
+  margin: 0 5px 0 0;
+}
+
+.field-label::after {
+  content: ' ';
+}
+
+.field-value {
+  margin-right: 25px;
+  font-size: 12px;
+  display: inline;
+}
+
+.pnr-number {
+  font-family: 'Courier New', monospace;
+  letter-spacing: 1px;
+  font-weight: bold;
+}
+
+/* ============ SECTION DIVIDER ============ */
+.section-divider {
+  border-top: 1px solid #999;
+  margin: 6px 0;
+  height: 0;
+  width: 100%;
+}
+
+.section-title {
+  margin: 6px 0 4px 0;
+  font-size: 12px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: underline;
+  padding-top: 4px;
+}
+
+/* ============ PASSENGER TABLE ============ */
+.passenger-details-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 6px auto;
+  font-size: 11px;
+  border: 1px solid #000;
+}
+
+.passenger-details-table thead {
+  background: white;
+}
+
+.passenger-details-table th {
+  padding: 5px 6px;
+  text-align: left;
+  font-weight: bold;
+  border: 1px solid #000;
+  font-size: 11px;
+}
+
+.passenger-details-table td {
+  padding: 5px 6px;
+  border: 1px solid #000;
+  text-align: left;
+}
+
+/* ============ ACRONYMS ============ */
+.acronyms-section {
+  margin: 6px auto;
+  padding: 4px 0;
+  font-size: 10px;
+  text-align: center;
+}
+
+.acronym-text {
+  margin: 0;
+  line-height: 1.3;
+}
+
+/* ============ TRANSACTION NOTE ============ */
+.transaction-note {
+  margin: 4px auto;
+  font-size: 10px;
+  padding: 2px 0;
+  text-align: center;
+}
+
+.transaction-note p {
+  margin: 2px 0;
+}
+
+/* ============ PAYMENT DETAILS ============ */
+.payment-row {
+  display: inline-block;
+  padding: 2px 20px;
+  font-size: 11px;
+  text-align: center;
+  margin: 2px 0;
+}
+
+.payment-label {
+  font-weight: normal;
+  display: inline;
+}
+
+.payment-value {
+  font-weight: bold;
+  display: inline;
+  margin-left: 8px;
+}
+
+/* ============ IMPORTANT NOTES ============ */
+.important-notes {
+  font-size: 10px;
+  margin: 4px auto;
+  padding: 4px 0;
+  text-align: center;
+}
+
+.important-notes p {
+  margin: 2px 0;
+  line-height: 1.3;
+}
+
+/* ============ GST INFO ============ */
+.gst-info {
+  font-size: 10px;
+  margin: 4px auto;
+  text-align: center;
+}
+
+.gst-info p {
+  margin: 2px 0;
+  line-height: 1.3;
+}
+
+/* ============ FOOTER ============ */
+.ticket-footer {
+  border-top: 2px solid #000;
+  margin-top: 8px;
+  padding-top: 6px;
+  text-align: center;
+  font-size: 10px;
+}
+
+.ticket-footer p {
+  margin: 2px 0;
+  line-height: 1.3;
+}
+
+/* ============ ACTION BUTTONS ============ */
+.ticket-actions {
+  display: flex;
+  gap: 12px;
+  padding: 12px 35px;
+  background: #f5f5f5;
+  border-top: 1px solid #ddd;
+  justify-content: center;
+}
+
+.btn {
+  padding: 10px 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 13px;
+  background: white;
+}
+
+.btn-primary {
+  background: #2563eb;
+  color: white;
+  border-color: #2563eb;
+}
+
+.btn-primary:hover {
+  background: #1d4ed8;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.btn-secondary {
+  background: white;
+  color: #333;
+  border-color: #999;
+}
+
+.btn-secondary:hover {
+  background: #f0f0f0;
+}
+
+/* ============ PRINT STYLES ============ */
+@media print {
+  .ticket-slip-overlay {
+    background: white;
+    position: static;
+    padding: 0;
+  }
+
+  .ticket-slip-container {
+    box-shadow: none;
+    max-width: 100%;
+    margin: 0;
+    width: 210mm;
+    height: auto;
+  }
+
+  .ticket-close-btn,
+  .ticket-actions {
+    display: none !important;
+  }
+
+  .ticket-slip-content {
+    padding: 25px 35px;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
+  @page {
+    size: A4;
+    margin: 0;
+  }
+}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 768px) {
+  .ticket-slip-container {
+    max-width: 95%;
+    width: 95%;
+  }
+
+  .ticket-slip-content {
+    padding: 16px 20px;
+    font-size: 12px;
+  }
+
+  .field-label {
+    min-width: 100px;
+    font-size: 11px;
+  }
+
+  .field-value {
+    font-size: 11px;
+    margin-right: 20px;
+  }
+
+  .ticket-actions {
+    flex-direction: column;
+    padding: 12px 20px;
+  }
+
+  .btn {
+    width: 100%;
+  }
+}
