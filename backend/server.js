@@ -18,7 +18,12 @@ const bookingSessionRoutes = require("./routes/bookingSessions");
 global.jwt = jwt;
 
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: [
+    "https://prompt-based-ai-agent-for-train-ticket-booking-qoskhjn92.vercel.app"
+  ],
+  credentials: true
+}));
 
 // ✅ INCREASED PAYLOAD LIMITS for Base64-encoded PDF uploads
 // Default Express limit is 100KB, but Base64 PDFs need more space
