@@ -31,10 +31,12 @@ const BookingForm = () => {
   const [showTick, setShowTick] = useState(false);
   const [expandedTrainDetails, setExpandedTrainDetails] = useState(null);
 
+  const API = import.meta.env.VITE_API_BASE;
+
   useEffect(() => {
     if (trainId) {
       console.log("Fetching train with trainId:", trainId);
-      fetch(`http://localhost:5000/api/trains/${trainId}`)
+      fetch(`${API}/api/trains/${trainId}`)
         .then(res => {
           if (!res.ok) {
             console.error("Train fetch failed with status:", res.status);

@@ -93,7 +93,7 @@ export default function PromptBooking() {
     setProgress({ progress: 0, message: "" });
 
     try {
-      const API_BASE = import.meta.env.VITE_API_BASE || "http://localhost:5000";
+      const API_BASE = import.meta.env.VITE_API_BASE || "https://railway-backend-uehg.onrender.com";
       const url = `${API_BASE.replace(/\/+$/,'')}/api/prompt/book`;
 
       const res = await fetch(url, {
@@ -195,7 +195,7 @@ export default function PromptBooking() {
       setLoading(true);
       setError("");
 
-      const API_BASE = import.meta.env.VITE_API_BASE || "http://localhost:5000";
+      const API_BASE = import.meta.env.VITE_API_BASE || "https://railway-backend-uehg.onrender.com";
       const verifyResponse = await fetch(`${API_BASE}/api/payment/verify`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -368,7 +368,7 @@ export default function PromptBooking() {
 
       // Upload PDF to backend
       console.log('📤 Uploading PDF to backend...');
-      const API_BASE = import.meta.env.VITE_API_BASE || "http://localhost:5000";
+      const API_BASE = import.meta.env.VITE_API_BASE || "https://railway-backend-uehg.onrender.com";
       const uploadResponse = await fetch(`${API_BASE}/api/payment/upload-pdf`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

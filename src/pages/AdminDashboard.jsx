@@ -35,10 +35,12 @@ const AdminDashboard = () => {
     setTrain({ ...train, [e.target.name]: e.target.value });
   };
 
+  const API = import.meta.env.VITE_API_BASE;
+
   const handleAddTrain = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch("http://localhost:5000/api/trains", {
+      const res = await fetch(`${API}/api/trains`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

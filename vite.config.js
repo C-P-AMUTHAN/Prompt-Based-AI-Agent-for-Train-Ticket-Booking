@@ -10,7 +10,7 @@ export default defineConfig({
     // Proxy API requests to backend during development
     proxy: {
       '/api': {
-        target: 'http://localhost:5000',
+        target: 'https://railway-backend-uehg.onrender.com',
         changeOrigin: true,
         secure: false,
         rewrite: (path) => path.replace(/^\/api/, '/api')

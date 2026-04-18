@@ -3,13 +3,15 @@ import React, { useEffect, useState } from "react";
 import './Home.css';
 import BackButton from '../components/BackButton';
 
+const API = import.meta.env.VITE_API_BASE;
+
 const TrainDetails = () => {
   const [trains, setTrains] = useState([]);
   const [editingTrainId, setEditingTrainId] = useState(null);
   const [editForm, setEditForm] = useState({});
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/trains")
+    fetch(`${API}/api/trains`)
       .then((res) => res.json())
       .then((data) => setTrains(data))
       .catch((err) => console.error("Error fetching trains:", err));
@@ -17,7 +19,7 @@ const TrainDetails = () => {
 
   const handleDelete = async (id) => {
     try {
-      const res = await fetch(`http://localhost:5000/api/trains/${id}`, { method: 'DELETE' });
+      const res = await fetch(`${API}/api/trains/${id}`, { method: 'DELETE' });
       if (res.ok) {
         setTrains(trains.filter(t => t._id !== id));
       } else {
@@ -35,7 +37,7 @@ const TrainDetails = () => {
 
   const handleSave = async () => {
     try {
-      const res = await fetch(`http://localhost:5000/api/trains/${editingTrainId}`, {
+      const res = await fetch(`${API}/api/trains/${editingTrainId}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(editForm)

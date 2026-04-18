@@ -41,6 +41,8 @@ const Profile = () => {
     fetchUserProfile();
   }, []);
 
+  const API = import.meta.env.VITE_API_BASE;
+
   // Link any unlinked tickets when component mounts
   useEffect(() => {
     const linkTickets = async () => {
@@ -53,7 +55,7 @@ const Profile = () => {
         const user = JSON.parse(currentUser);
         
         // Call link endpoint to link any unlinked tickets
-        await fetch(`http://localhost:5000/api/tickets/link-tickets/${user.id}`, {
+        await fetch(`${API}/api/tickets/link-tickets/${user.id}`, {
           method: 'POST',
           headers: { 'Authorization': `Bearer ${token}` }
         });
@@ -84,7 +86,7 @@ const Profile = () => {
       }
 
       const user = JSON.parse(currentUser);
-      const response = await fetch(`http://localhost:5000/api/profile/${user.id}`, {
+      const response = await fetch(`${API}/api/profile/${user.id}`, {
         headers: { 'Authorization': `Bearer ${token}` }
       });
 
@@ -116,7 +118,7 @@ const Profile = () => {
       const token = localStorage.getItem('token');
       const currentUser = JSON.parse(localStorage.getItem('user'));
 
-      const response = await fetch(`http://localhost:5000/api/tickets/user/${currentUser.id}`, {
+      const response = await fetch(`${API}/api/tickets/user/${currentUser.id}`, {
         headers: { 'Authorization': `Bearer ${token}` }
       });
 
@@ -145,7 +147,7 @@ const Profile = () => {
       const token = localStorage.getItem('token');
       const currentUser = JSON.parse(localStorage.getItem('user'));
 
-      const response = await fetch(`http://localhost:5000/api/profile/${currentUser.id}`, {
+      const response = await fetch(`${API}/api/profile/${currentUser.id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -175,7 +177,7 @@ const Profile = () => {
       const token = localStorage.getItem('token');
       const currentUser = JSON.parse(localStorage.getItem('user'));
 
-      const response = await fetch(`http://localhost:5000/api/profile/${currentUser.id}/change-phone`, {
+      const response = await fetch(`${API}/api/profile/${currentUser.id}/change-phone`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -207,7 +209,7 @@ const Profile = () => {
         : 'verify-email-change';
 
       const response = await fetch(
-        `http://localhost:5000/api/profile/${currentUser.id}/${endpoint}`,
+        `${API}/api/profile/${currentUser.id}/${endpoint}`,
         {
           method: 'POST',
           headers: {
@@ -250,7 +252,7 @@ const Profile = () => {
       const token = localStorage.getItem('token');
       const currentUser = JSON.parse(localStorage.getItem('user'));
 
-      const response = await fetch(`http://localhost:5000/api/profile/${currentUser.id}/delete-account`, {
+      const response = await fetch(`${API}/api/profile/${currentUser.id}/delete-account`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -282,7 +284,7 @@ const Profile = () => {
       const token = localStorage.getItem('token');
       const currentUser = JSON.parse(localStorage.getItem('user'));
 
-      const response = await fetch(`http://localhost:5000/api/profile/${currentUser.id}/request-password-change`, {
+      const response = await fetch(`${API}/api/profile/${currentUser.id}/request-password-change`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -346,7 +348,7 @@ const Profile = () => {
       const token = localStorage.getItem('token');
       const currentUser = JSON.parse(localStorage.getItem('user'));
 
-      const response = await fetch(`http://localhost:5000/api/profile/${currentUser.id}/verify-password-change`, {
+      const response = await fetch(`${API}/api/profile/${currentUser.id}/verify-password-change`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

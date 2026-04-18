@@ -486,12 +486,13 @@ exports.handlePromptBooking = async (req, res) => {
       });
     }
 
+    const API = import.meta.env.VITE_API_BASE;
     // STEP 2: Validation Rules
     // Validate stations exist
     try {
       const [sourceResponse, destResponse] = await Promise.all([
-        axios.get('http://localhost:5000/api/stations/search', { params: { query: bookingDetails.source_station } }),
-        axios.get('http://localhost:5000/api/stations/search', { params: { query: bookingDetails.destination_station } })
+        axios.get(`${API}/api/stations/search`, { params: { query: bookingDetails.source_station } }),
+        axios.get(`${API}/api/stations/search`, { params: { query: bookingDetails.destination_station } })
       ]);
       
       if (sourceResponse.data.length === 0 || destResponse.data.length === 0) {
@@ -546,7 +547,7 @@ exports.handlePromptBooking = async (req, res) => {
     // STEP 3: Search trains (try erail API first, then MongoDB fallback)
     let trains = [];
     try {
-      const searchResponse = await axios.get('http://localhost:5000/api/trains/live-search', {
+      const searchResponse = await axios.get(`${API}/api/trains/live-search`, {
         params: {
           from: bookingDetails.source_station,
           to: bookingDetails.destination_station,
@@ -584,7 +585,7 @@ exports.handlePromptBooking = async (req, res) => {
     // STEP 6: If auto_pay, return order details for frontend checkout
     if (bookingDetails.auto_pay) {
       try {
-        const orderResponse = await axios.post('http://localhost:5000/api/payment/create-order', {
+        const orderResponse = await axios.post(`${API}/api/payment/create-order`, {
           amount: totalCost,
           bookingData: {
             from: bookingDetails.source_station,

@@ -49,7 +49,7 @@ const PaymentPage = () => {
     setError('');
 
     try {
-      const API_BASE = import.meta.env.VITE_API_BASE || "http://localhost:5000";
+      const API_BASE = import.meta.env.VITE_API_BASE || "https://railway-backend-uehg.onrender.com";
       
       // Step 1: Create order from backend
       console.log('📦 Creating Razorpay order...');
@@ -150,7 +150,7 @@ const PaymentPage = () => {
       setLoading(true);
       console.log('🔐 Verifying payment signature...');
 
-      const API_BASE = import.meta.env.VITE_API_BASE || "http://localhost:5000";
+      const API_BASE = import.meta.env.VITE_API_BASE || "https://railway-backend-uehg.onrender.com";
       
       // Verify payment signature with backend
       const verifyResponse = await fetch(`${API_BASE}/api/payment/verify`, {

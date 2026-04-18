@@ -11,10 +11,12 @@ const Home = () => {
   const [notification, setNotification] = useState({ isOpen: false, title: '', message: '', type: 'info' });
   const navigate = useNavigate();
 
+  const API = import.meta.env.VITE_API_BASE;
+
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (token) {
-      fetch('http://localhost:5000/api/auth/me', {
+      fetch(`${API}/api/auth/me`, {
         headers: { Authorization: `Bearer ${token}` }
       })
         .then(res => {

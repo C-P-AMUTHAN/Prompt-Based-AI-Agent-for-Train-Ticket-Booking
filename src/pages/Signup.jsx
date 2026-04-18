@@ -20,6 +20,8 @@ const Signup = () => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
+  const API = import.meta.env.VITE_API_BASE;
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
@@ -34,7 +36,7 @@ const Signup = () => {
       }
 
       try {
-        const response = await fetch('http://localhost:5000/api/auth/signup', {
+        const response = await fetch(`${API}/api/auth/signup`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(form),
@@ -60,7 +62,7 @@ const Signup = () => {
       }
 
       try {
-        const response = await fetch('http://localhost:5000/api/auth/signup/verify-email', {
+        const response = await fetch(`${API}/api/auth/signup/verify-email`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ userId, otp: emailOtp }),
@@ -101,7 +103,7 @@ const Signup = () => {
     setError('');
 
     try {
-      const response = await fetch('http://localhost:5000/api/auth/signup/resend-otp', {
+      const response = await fetch(`${API}/api/auth/signup/resend-otp`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ userId, type }),

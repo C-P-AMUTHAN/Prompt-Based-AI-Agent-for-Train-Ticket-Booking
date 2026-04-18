@@ -35,7 +35,7 @@ app.use('/mcp', mcpLimiter);
 app.use('/mcp', authenticateMCP);
 
 // Backend API base URL
-const BACKEND_URL = process.env.BACKEND_URL || 'http://localhost:5000';
+const BACKEND_URL = process.env.BACKEND_URL || 'https://railway-backend-uehg.onrender.com';
 
 /**
  * MCP Tool: Search Trains

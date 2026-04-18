@@ -17,12 +17,14 @@ const Signin = () => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
+  const API = import.meta.env.VITE_API_BASE;
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const { email, password } = form;
     if (email && password) {
       try {
-        fetch('http://localhost:5000/api/auth/signin', {
+        fetch(`${API}/api/auth/signin`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ email, password }),

@@ -85,10 +85,12 @@ const ForgotPassword = () => {
       return;
     }
 
+    const API = import.meta.env.VITE_API_BASE;
+
     setLoading(true);
     try {
       // First, find user by email
-      const response = await fetch('http://localhost:5000/api/auth/signin', {
+      const response = await fetch(`${API}/api/auth/signin`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password: 'dummy' }), // Will fail but we don't care
@@ -102,7 +104,7 @@ const ForgotPassword = () => {
       // For MVP, let's assume we can get user by email from a public endpoint or use a different approach
 
       // Call a new endpoint that takes email and sends OTP
-      const otpResponse = await fetch('http://localhost:5000/api/auth/forgot-password-otp', {
+      const otpResponse = await fetch(`${API}/api/auth/forgot-password-otp`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email }),
@@ -173,7 +175,7 @@ const ForgotPassword = () => {
 
     setLoading(true);
     try {
-      const response = await fetch(`http://localhost:5000/api/profile/${userId}/verify-password-change`, {
+      const response = await fetch(`${API}/api/profile/${userId}/verify-password-change`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ otp, newPassword }),
